@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC   -shared -Wl,-soname,libSolTrack_RiseSet.o.so -o /home/hardyn/solar/devel/lib/libSolTrack_RiseSet.o.so CMakeFiles/SolTrack_RiseSet.o.dir/src/SolTrack_RiseSet.c.o 

@@ -1,0 +1,8 @@
+prefix=/home/hardyn/solar/install
+
+Name: solar_track
+Description: Description of solar_track
+Version: 0.0.0
+Cflags: -I/home/hardyn/solar/install/include
+Libs: -L/home/hardyn/solar/install/lib 
+Requires: 

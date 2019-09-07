@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC   -shared -Wl,-soname,libSolTrack.o.so -o /home/hardyn/solar/devel/lib/libSolTrack.o.so CMakeFiles/SolTrack.o.dir/src/SolTrack.c.o 

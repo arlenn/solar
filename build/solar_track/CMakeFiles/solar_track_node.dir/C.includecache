@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hardyn/solar/src/solar_track/src/SolTrack.c
+SolTrack.h
+/home/hardyn/solar/src/solar_track/src/SolTrack.h
+
+/home/hardyn/solar/src/solar_track/src/SolTrack_RiseSet.c
+SolTrack.h
+/home/hardyn/solar/src/solar_track/src/SolTrack.h
+
