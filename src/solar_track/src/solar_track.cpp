@@ -1,8 +1,10 @@
 #include "ros/ros.h"
-#include "std_msgs/Float32.h"  //we will have to check on the micros capability
-//more message libs will have to be added
+#include "std_msgs/Float32.h"  //we will have to check on the MCUs capability
 
-#include "SolTrack.h" //solar tracking library
+extern "C" 
+{
+  #include "SolTrack.h" //solar tracking library
+}
 
 
 int main(int argc, char **argv)
@@ -109,7 +111,11 @@ int main(int argc, char **argv)
      * given as a template parameter to the advertise<>() call, as was done
      * in the constructor above.
      */
-    //solar_position_pub.publish(riseSet.riseTime);
+
+    std_msgs::Float32 riseTime;
+    riseTime.data = riseSet.riseTime;
+
+    solar_position_pub.publish(riseTime);
 
     ros::spinOnce();
 

@@ -3,6 +3,6 @@ prefix=/home/hardyn/solar/install
 Name: solar_track
 Description: Description of solar_track
 Version: 0.0.0
-Cflags: -I/home/hardyn/solar/install/include
-Libs: -L/home/hardyn/solar/install/lib 
-Requires: 
+Cflags: -I/home/hardyn/solar/install/include -I/opt/ros/melodic/include -I/usr/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp
+Libs: -L/home/hardyn/solar/install/lib /opt/ros/melodic/lib/libroscpp.so /usr/lib/x86_64-linux-gnu/libboost_filesystem.so /usr/lib/x86_64-linux-gnu/libboost_signals.so /opt/ros/melodic/lib/librosconsole.so /opt/ros/melodic/lib/librosconsole_log4cxx.so /opt/ros/melodic/lib/librosconsole_backend_interface.so /usr/lib/x86_64-linux-gnu/liblog4cxx.so /usr/lib/x86_64-linux-gnu/libboost_regex.so /opt/ros/melodic/lib/libxmlrpcpp.so /opt/ros/melodic/lib/libroscpp_serialization.so /opt/ros/melodic/lib/librostime.so /opt/ros/melodic/lib/libcpp_common.so /usr/lib/x86_64-linux-gnu/libboost_system.so /usr/lib/x86_64-linux-gnu/libboost_thread.so /usr/lib/x86_64-linux-gnu/libboost_chrono.so /usr/lib/x86_64-linux-gnu/libboost_date_time.so /usr/lib/x86_64-linux-gnu/libboost_atomic.so /usr/lib/x86_64-linux-gnu/libpthread.so /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+Requires: roscpp std_msgs

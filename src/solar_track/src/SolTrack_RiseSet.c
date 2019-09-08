@@ -21,6 +21,7 @@
  * - subroutine riset() in riset.f90 from libTheSky (libthesky.sf.net) for more info
  */
 
+
 #include "SolTrack.h"
 
 void SolTrack_RiseSet(struct Time time,  struct Location location, struct Position *position, struct RiseSet *riseSet, double rsAlt, int useDegrees, int useNorthEqualsZero) {

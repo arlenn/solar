@@ -11,7 +11,7 @@ find_package(
   catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
-  # ${PROJECT_NAME}
+  ${PROJECT_NAME}
 )
 
 ## System dependencies are found with CMake's conventions
@@ -106,7 +106,7 @@ find_package(
 catkin_package(
    INCLUDE_DIRS include
 #  LIBRARIES solar_track
-#  CATKIN_DEPENDS roscpp std_msgs
+   CATKIN_DEPENDS roscpp std_msgs
 #  DEPENDS system_lib
 )
 
@@ -136,9 +136,9 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(
    ${PROJECT_NAME}_node 
-   src/solar_track.cpp
    src/SolTrack.c
    src/SolTrack_RiseSet.c
+   src/solar_track.cpp
 )
 
 ## Rename C++ executable without prefix

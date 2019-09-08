@@ -15,6 +15,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "catkin_generated/order_packages.cmake"
   "solar_track/catkin_generated/ordered_paths.cmake"
   "solar_track/catkin_generated/package.cmake"
+  "/home/hardyn/solar/devel/share/solar_track/cmake/solar_trackConfig-version.cmake"
+  "/home/hardyn/solar/devel/share/solar_track/cmake/solar_trackConfig.cmake"
   "/home/hardyn/solar/src/CMakeLists.txt"
   "/home/hardyn/solar/src/solar_track/CMakeLists.txt"
   "/home/hardyn/solar/src/solar_track/package.xml"

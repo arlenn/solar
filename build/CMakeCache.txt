@@ -269,6 +269,9 @@ SITE:STRING=hardyn-Inspiron-7537
 //Dependencies for target
 SolTrack.o_LIB_DEPENDS:STATIC=
 
+//The directory containing a CMake configuration file for SolTrack.
+SolTrack_DIR:PATH=SolTrack_DIR-NOTFOUND
+
 //Dependencies for target
 SolTrack_RiseSet.o_LIB_DEPENDS:STATIC=
 

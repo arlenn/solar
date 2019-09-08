@@ -18,9 +18,7 @@
   <http://www.gnu.org/licenses/>.
 */
 
-
 #include "SolTrack.h"
-
 
 /**
  * @brief   Main function to compute the position of the Sun

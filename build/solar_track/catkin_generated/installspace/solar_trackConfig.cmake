@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(solar_track_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "include " STREQUAL " ")
+if(NOT "include;/opt/ros/melodic/include;/usr/include;/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp " STREQUAL " ")
   set(solar_track_INCLUDE_DIRS "")
-  set(_include_dirs "include")
+  set(_include_dirs "include;/opt/ros/melodic/include;/usr/include;/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -116,7 +116,7 @@ if(NOT "include " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "")
+set(libraries "/opt/ros/melodic/lib/libroscpp.so;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;/usr/lib/x86_64-linux-gnu/libboost_signals.so;/opt/ros/melodic/lib/librosconsole.so;/opt/ros/melodic/lib/librosconsole_log4cxx.so;/opt/ros/melodic/lib/librosconsole_backend_interface.so;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;/usr/lib/x86_64-linux-gnu/libboost_regex.so;/opt/ros/melodic/lib/libxmlrpcpp.so;/opt/ros/melodic/lib/libroscpp_serialization.so;/opt/ros/melodic/lib/librostime.so;/opt/ros/melodic/lib/libcpp_common.so;/usr/lib/x86_64-linux-gnu/libboost_system.so;/usr/lib/x86_64-linux-gnu/libboost_thread.so;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;/usr/lib/x86_64-linux-gnu/libpthread.so;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -154,7 +154,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(solar_track_EXPORTED_TARGETS "")
+set(solar_track_EXPORTED_TARGETS "roscpp_generate_messages_cpp;roscpp_generate_messages_eus;roscpp_generate_messages_lisp;roscpp_generate_messages_nodejs;roscpp_generate_messages_py;rosgraph_msgs_generate_messages_cpp;rosgraph_msgs_generate_messages_eus;rosgraph_msgs_generate_messages_lisp;rosgraph_msgs_generate_messages_nodejs;rosgraph_msgs_generate_messages_py;std_msgs_generate_messages_cpp;std_msgs_generate_messages_eus;std_msgs_generate_messages_lisp;std_msgs_generate_messages_nodejs;std_msgs_generate_messages_py;std_msgs_generate_messages_cpp;std_msgs_generate_messages_eus;std_msgs_generate_messages_lisp;std_msgs_generate_messages_nodejs;std_msgs_generate_messages_py;std_msgs_generate_messages_cpp;std_msgs_generate_messages_eus;std_msgs_generate_messages_lisp;std_msgs_generate_messages_nodejs;std_msgs_generate_messages_py;roscpp_generate_messages_cpp;roscpp_generate_messages_eus;roscpp_generate_messages_lisp;roscpp_generate_messages_nodejs;roscpp_generate_messages_py;rosgraph_msgs_generate_messages_cpp;rosgraph_msgs_generate_messages_eus;rosgraph_msgs_generate_messages_lisp;rosgraph_msgs_generate_messages_nodejs;rosgraph_msgs_generate_messages_py;std_msgs_generate_messages_cpp;std_msgs_generate_messages_eus;std_msgs_generate_messages_lisp;std_msgs_generate_messages_nodejs;std_msgs_generate_messages_py;std_msgs_generate_messages_cpp;std_msgs_generate_messages_eus;std_msgs_generate_messages_lisp;std_msgs_generate_messages_nodejs;std_msgs_generate_messages_py;std_msgs_generate_messages_cpp;std_msgs_generate_messages_eus;std_msgs_generate_messages_lisp;std_msgs_generate_messages_nodejs;std_msgs_generate_messages_py;roscpp_generate_messages_cpp;roscpp_generate_messages_eus;roscpp_generate_messages_lisp;roscpp_generate_messages_nodejs;roscpp_generate_messages_py;rosgraph_msgs_generate_messages_cpp;rosgraph_msgs_generate_messages_eus;rosgraph_msgs_generate_messages_lisp;rosgraph_msgs_generate_messages_nodejs;rosgraph_msgs_generate_messages_py;std_msgs_generate_messages_cpp;std_msgs_generate_messages_eus;std_msgs_generate_messages_lisp;std_msgs_generate_messages_nodejs;std_msgs_generate_messages_py;std_msgs_generate_messages_cpp;std_msgs_generate_messages_eus;std_msgs_generate_messages_lisp;std_msgs_generate_messages_nodejs;std_msgs_generate_messages_py;std_msgs_generate_messages_cpp;std_msgs_generate_messages_eus;std_msgs_generate_messages_lisp;std_msgs_generate_messages_nodejs;std_msgs_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${solar_track_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -162,7 +162,7 @@ foreach(t ${solar_track_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "")
+set(depends "roscpp;std_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
