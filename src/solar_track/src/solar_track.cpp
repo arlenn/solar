@@ -1,6 +1,7 @@
 #include "ros/ros.h"
 #include "ros/console.h"
-#include "std_msgs/Float32.h"  // We will have to check on the MCUs capability
+#include "std_msgs/Float32MultiArray.h" // We will have to check on the MCUs capability, 32bit probably OK.
+#include "std_msgs/Bool.h"
 
 #include <ctime>
 #include <cstdlib>
@@ -49,25 +50,30 @@ int main(int argc, char **argv)
    * than we can send them, the number here specifies how many messages to
    * buffer up before throwing some away.
    */
-  ros::Publisher solar_position_pub = nh.advertise<std_msgs::Float32>("solar_position", 1);
-
+  ros::Publisher solar_position_pub = nh.advertise<std_msgs::Float32MultiArray>("solar_position", 1);
+  ros::Publisher sun_is_visible_pub = nh.advertise<std_msgs::Bool>("sun_is_visible", 1);
   ros::Rate loop_rate(1);  // Hz
 
-  /**
-   * A count of how many messages we have sent. This is used to create
-   * a unique string for each message.
-   */
-  int count = 0;
+  
   while ( ros::ok() )
   {
-    // TODO According to ROS docs. this might need to be gaurded against a 0 value!
-    std::time_t epochNow = ros::Time::now().toSec();
+    /**
+     *Local variables
+    */
+    int utcHour;
+    float timeNowInHours;
+    
 
+    /**
+     * Aquire system time
+     */
+    std::time_t epochNow = ros::Time::now().toSec();   // TODO According to ROS docs. this might need to be gaurded against a 0 value!
     std::tm localTimeNow = *localtime(&epochNow);
     std::tm utcTimeNow = *gmtime(&epochNow);
 
+
+
     // DEBUG: Print various components of tm structure.
-    
     ROS_INFO_STREAM("Local Time/date as reported by system: "
       << 1900 + localTimeNow.tm_year << "-" // Years since 1900
       << 1 + localTimeNow.tm_mon << "-"  // A number of tm fields are 0 indexed
@@ -79,59 +85,79 @@ int main(int argc, char **argv)
       << localTimeNow.tm_zone << ";"
       << "Relative UTC corrected for DST:" << 1 + utcTimeNow.tm_hour - 1 );
 
+
+    /**
+     * SolTrack library arguments
+     */
+    int useDegrees = 1;             // Input (geographic position) and output are in degrees
+    int useNorthEqualsZero = 1;     // Azimuth: 0 = South, pi/2 (90deg) = West w.  0 = North, pi/2 (90deg) = East
+    int computeRefrEquatorial = 1;  // Compure refraction-corrected equatorial coordinates (Hour angle, declination): 0-no, 1-yes
+    int computeDistance = 0;        // Compute the distance to the Sun in AU: 0-no, 1-yes
+      
+    /**
+     * SolTrack structures
+     */
+    struct Time time;
+    struct Location loc;
+    struct Position pos;
+    struct RiseSet riseSet;
+
     /**
      * Populate the SolTrack structures
      */
-
-    int useDegrees = 1;             // Input (geographic position) and output are in degrees
-    int useNorthEqualsZero = 1;     // Azimuth: 0 = South, pi/2 (90deg) = West w.  0 = North, pi/2 (90deg) = East
-    int computeRefrEquatorial = 0;  // Compure refraction-corrected equatorial coordinates (Hour angle, declination): 0-no, 1-yes
-    int computeDistance = 1;        // Compute the distance to the Sun in AU: 0-no, 1-yes
-      
-    struct Time time; // "Time" is probably a pretty dangerous struct name for the SolTrack author to be using
-
-    time.year = 1900 + localTimeNow.tm_year;
-    time.month = 1 + localTimeNow.tm_mon;
-    time.day = localTimeNow.tm_mday;
+    time.year = 1900 + utcTimeNow.tm_year;
+    time.month = 1 + utcTimeNow.tm_mon;
+    time.day = utcTimeNow.tm_mday;
 
     if (localTimeNow.tm_isdst)  // Handle DST
     {
-      time.hour = (1 + utcTimeNow.tm_hour) - 1; // UTC!
+      utcHour = 1 + utcTimeNow.tm_hour - 1;
+      time.hour = utcHour;
     }
 
-    time.minute = 1 + localTimeNow.tm_min;
-    time.second = 1 + localTimeNow.tm_sec; //SolTrack resolves to micro-seconds, ctime does not. This is good enough.
-    
-    struct Location loc;
+    time.minute = 1 + utcTimeNow.tm_min;
+    time.second = 1 + utcTimeNow.tm_sec; //SolTrack resolves to micro-seconds, ctime does not. This is good enough.
 
     loc.latitude =  49.2819798;  // 417 Carlen Pl.
     loc.longitude  = -122.82307848;
 
-    loc.pressure = 101.325;  // Atmospheric pressure in kPa @STP, we aren't using refraction anyway (see above)
-    loc.temperature = 273.0;  // Atmospheric temperature in K @STP, we aren't using refraction anyway (see above)
+    loc.pressure = 101.325;  // Atmospheric pressure in kPa @STP
+    loc.temperature = 273.0;  // Atmospheric temperature in K @STP
     
     // Compute rise and set times:
-    struct Position pos;
-    struct RiseSet riseSet;
     SolTrack_RiseSet(time, loc, &pos, &riseSet, 0.0, useDegrees, useNorthEqualsZero);  // 5th term (0.0) is altitude (assume meters? It's not clear)
     
     // Compute positions:
     SolTrack(time, loc, &pos, useDegrees, useNorthEqualsZero, computeRefrEquatorial, computeDistance);
     
-    /**
-     * Populate ROS message with SolTrack structures
-     */
-
-
-
-
+    ROS_INFO_STREAM("Rise:" << riseSet.riseTime << " Set:" << riseSet.setTime);
 
     /**
      * This is a message object. You stuff it with data, and then publish it.
-     */
+     */    
+    std_msgs::Float32MultiArray asel;  //need better example on using ROS arrays. This is pretty simplistic
+    
+    asel.data.clear();
+    asel.data.push_back(pos.azimuthRefract);
+    asel.data.push_back(pos.altitudeRefract);
+     
+    std_msgs::Bool sun;
+    bool sunIsVisible;
 
-    std_msgs::Float32 riseTime;
-    riseTime.data = riseSet.riseTime;
+    timeNowInHours = utcHour + utcTimeNow.tm_min / 60.0;
+
+    ROS_INFO_STREAM("Decimal Time: " << timeNowInHours);
+
+    if (timeNowInHours > riseSet.riseTime && timeNowInHours < riseSet.setTime) 
+    {
+      sunIsVisible = true;
+      sun.data = sunIsVisible;
+    } else
+      {
+        sunIsVisible = false;
+        sun.data = sunIsVisible;
+      }
+    
 
     /**
      * The publish() function is how you send messages. The parameter
@@ -140,12 +166,11 @@ int main(int argc, char **argv)
      * in the constructor above.
      */
 
-    solar_position_pub.publish(riseTime);
+    solar_position_pub.publish(asel);
+    sun_is_visible_pub.publish(sun);
 
     ros::spinOnce();
-
     loop_rate.sleep();
-    ++count;
   }
 
   return 0;

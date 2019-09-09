@@ -65,7 +65,10 @@ solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melo
 solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/ros/wall_timer.h
 solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
-solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/std_msgs/Float32.h
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/std_msgs/Bool.h
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/std_msgs/Float32MultiArray.h
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/std_msgs/MultiArrayDimension.h
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/std_msgs/MultiArrayLayout.h
 solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
 
