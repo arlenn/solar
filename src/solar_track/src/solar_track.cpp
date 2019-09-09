@@ -53,17 +53,9 @@ int main(int argc, char **argv)
   ros::Publisher solar_position_pub = nh.advertise<std_msgs::Float32MultiArray>("solar_position", 1);
   ros::Publisher sun_is_visible_pub = nh.advertise<std_msgs::Bool>("sun_is_visible", 1);
   ros::Rate loop_rate(1);  // Hz
-
   
   while ( ros::ok() )
-  {
-    /**
-     *Local variables
-    */
-    int utcHour;
-    float timeNowInHours;
-    
-
+  { 
     /**
      * Aquire system time
      */
@@ -74,7 +66,7 @@ int main(int argc, char **argv)
 
 
     // DEBUG: Print various components of tm structure.
-    ROS_INFO_STREAM("Local Time/date as reported by system: "
+    ROS_INFO_STREAM("Local time/date as reported by system: "
       << 1900 + localTimeNow.tm_year << "-" // Years since 1900
       << 1 + localTimeNow.tm_mon << "-"  // A number of tm fields are 0 indexed
       << localTimeNow.tm_mday << ","
@@ -83,7 +75,18 @@ int main(int argc, char **argv)
       << 1 + localTimeNow.tm_sec << ","
       << "DST:" << localTimeNow.tm_isdst << "," 
       << localTimeNow.tm_zone << ";"
-      << "Relative UTC corrected for DST:" << 1 + utcTimeNow.tm_hour - 1 );
+      << "Corrected for DST:" << 1 + localTimeNow.tm_hour - localTimeNow.tm_isdst );
+
+    // DEBUG: Print various components of tm structure.
+    ROS_INFO_STREAM("UTC time/date as reported by system: "
+      << 1900 + utcTimeNow.tm_year << "-" // Years since 1900
+      << 1 + utcTimeNow.tm_mon << "-"  // A number of tm fields are 0 indexed
+      << utcTimeNow.tm_mday << ","
+      << 1 + utcTimeNow.tm_hour << ":"
+      << 1 + utcTimeNow.tm_min << ":"
+      << 1 + utcTimeNow.tm_sec << ","
+      << "DST:" << utcTimeNow.tm_isdst << "," 
+      << utcTimeNow.tm_zone);
 
 
     /**
@@ -108,13 +111,7 @@ int main(int argc, char **argv)
     time.year = 1900 + utcTimeNow.tm_year;
     time.month = 1 + utcTimeNow.tm_mon;
     time.day = utcTimeNow.tm_mday;
-
-    if (localTimeNow.tm_isdst)  // Handle DST
-    {
-      utcHour = 1 + utcTimeNow.tm_hour - 1;
-      time.hour = utcHour;
-    }
-
+    time.hour = 1 + utcTimeNow.tm_hour;
     time.minute = 1 + utcTimeNow.tm_min;
     time.second = 1 + utcTimeNow.tm_sec; //SolTrack resolves to micro-seconds, ctime does not. This is good enough.
 
@@ -130,7 +127,7 @@ int main(int argc, char **argv)
     // Compute positions:
     SolTrack(time, loc, &pos, useDegrees, useNorthEqualsZero, computeRefrEquatorial, computeDistance);
     
-    ROS_INFO_STREAM("Rise:" << riseSet.riseTime << " Set:" << riseSet.setTime);
+    ROS_INFO_STREAM("Rise: " << riseSet.riseTime << " Set: " << riseSet.setTime);
 
     /**
      * This is a message object. You stuff it with data, and then publish it.
@@ -144,11 +141,9 @@ int main(int argc, char **argv)
     std_msgs::Bool sun;
     bool sunIsVisible;
 
-    timeNowInHours = utcHour + utcTimeNow.tm_min / 60.0;
+    ROS_INFO_STREAM("Decimal Time: " << utcTimeNow.tm_hour + utcTimeNow.tm_min / 60.0);
 
-    ROS_INFO_STREAM("Decimal Time: " << timeNowInHours);
-
-    if (timeNowInHours > riseSet.riseTime && timeNowInHours < riseSet.setTime) 
+    if (utcTimeNow.tm_hour + utcTimeNow.tm_min / 60.0 > riseSet.riseTime && (utcTimeNow.tm_hour + utcTimeNow.tm_min / 60.0) < riseSet.setTime) 
     {
       sunIsVisible = true;
       sun.data = sunIsVisible;
