@@ -15,8 +15,14 @@ math.h
 /home/hardyn/solar/src/solar_track/src/solar_track.cpp
 ros/ros.h
 /home/hardyn/solar/src/solar_track/src/ros/ros.h
+ros/console.h
+/home/hardyn/solar/src/solar_track/src/ros/console.h
 std_msgs/Float32.h
 /home/hardyn/solar/src/solar_track/src/std_msgs/Float32.h
+ctime
+-
+cstdlib
+-
 SolTrack.h
 /home/hardyn/solar/src/solar_track/src/SolTrack.h
 
