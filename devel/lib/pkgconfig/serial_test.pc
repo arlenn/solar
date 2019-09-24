@@ -1,0 +1,8 @@
+prefix=/home/hardyn/solar/devel
+
+Name: serial_test
+Description: Description of serial_test
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/hardyn/solar/devel/lib 
+Requires: roscpp std_msgs

@@ -24,7 +24,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/hardyn/solar/src/solar_track/src/solar_track.cpp" "/home/hardyn/solar/build/solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o"
+  "/home/hardyn/solar/src/solar_track/src/solar_track_node.cpp" "/home/hardyn/solar/build/solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -12,7 +12,7 @@ stdio.h
 math.h
 /home/hardyn/solar/src/solar_track/include/math.h
 
-/home/hardyn/solar/src/solar_track/src/solar_track.cpp
+/home/hardyn/solar/src/solar_track/src/solar_track_node.cpp
 ros/ros.h
 /home/hardyn/solar/src/solar_track/src/ros/ros.h
 ros/console.h

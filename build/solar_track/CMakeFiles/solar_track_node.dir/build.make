@@ -105,42 +105,42 @@ solar_track/CMakeFiles/solar_track_node.dir/src/SolTrack_RiseSet.c.o.provides: s
 solar_track/CMakeFiles/solar_track_node.dir/src/SolTrack_RiseSet.c.o.provides.build: solar_track/CMakeFiles/solar_track_node.dir/src/SolTrack_RiseSet.c.o
 
 
-solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: solar_track/CMakeFiles/solar_track_node.dir/flags.make
-solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o: /home/hardyn/solar/src/solar_track/src/solar_track.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hardyn/solar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o"
-	cd /home/hardyn/solar/build/solar_track && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o -c /home/hardyn/solar/src/solar_track/src/solar_track.cpp
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o: solar_track/CMakeFiles/solar_track_node.dir/flags.make
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o: /home/hardyn/solar/src/solar_track/src/solar_track_node.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/hardyn/solar/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o"
+	cd /home/hardyn/solar/build/solar_track && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o -c /home/hardyn/solar/src/solar_track/src/solar_track_node.cpp
 
-solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/solar_track_node.dir/src/solar_track.cpp.i"
-	cd /home/hardyn/solar/build/solar_track && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hardyn/solar/src/solar_track/src/solar_track.cpp > CMakeFiles/solar_track_node.dir/src/solar_track.cpp.i
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.i"
+	cd /home/hardyn/solar/build/solar_track && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hardyn/solar/src/solar_track/src/solar_track_node.cpp > CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.i
 
-solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/solar_track_node.dir/src/solar_track.cpp.s"
-	cd /home/hardyn/solar/build/solar_track && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hardyn/solar/src/solar_track/src/solar_track.cpp -o CMakeFiles/solar_track_node.dir/src/solar_track.cpp.s
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.s"
+	cd /home/hardyn/solar/build/solar_track && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hardyn/solar/src/solar_track/src/solar_track_node.cpp -o CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.s
 
-solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o.requires:
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o.requires:
 
-.PHONY : solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o.requires
+.PHONY : solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o.requires
 
-solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o.provides: solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o.requires
-	$(MAKE) -f solar_track/CMakeFiles/solar_track_node.dir/build.make solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o.provides.build
-.PHONY : solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o.provides
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o.provides: solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o.requires
+	$(MAKE) -f solar_track/CMakeFiles/solar_track_node.dir/build.make solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o.provides.build
+.PHONY : solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o.provides
 
-solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o.provides.build: solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o
+solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o.provides.build: solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o
 
 
 # Object files for target solar_track_node
 solar_track_node_OBJECTS = \
 "CMakeFiles/solar_track_node.dir/src/SolTrack.c.o" \
 "CMakeFiles/solar_track_node.dir/src/SolTrack_RiseSet.c.o" \
-"CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o"
+"CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o"
 
 # External object files for target solar_track_node
 solar_track_node_EXTERNAL_OBJECTS =
 
 /home/hardyn/solar/devel/lib/solar_track/solar_track_node: solar_track/CMakeFiles/solar_track_node.dir/src/SolTrack.c.o
 /home/hardyn/solar/devel/lib/solar_track/solar_track_node: solar_track/CMakeFiles/solar_track_node.dir/src/SolTrack_RiseSet.c.o
-/home/hardyn/solar/devel/lib/solar_track/solar_track_node: solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o
+/home/hardyn/solar/devel/lib/solar_track/solar_track_node: solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o
 /home/hardyn/solar/devel/lib/solar_track/solar_track_node: solar_track/CMakeFiles/solar_track_node.dir/build.make
 /home/hardyn/solar/devel/lib/solar_track/solar_track_node: /opt/ros/melodic/lib/libroscpp.so
 /home/hardyn/solar/devel/lib/solar_track/solar_track_node: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
@@ -172,7 +172,7 @@ solar_track/CMakeFiles/solar_track_node.dir/build: /home/hardyn/solar/devel/lib/
 
 solar_track/CMakeFiles/solar_track_node.dir/requires: solar_track/CMakeFiles/solar_track_node.dir/src/SolTrack.c.o.requires
 solar_track/CMakeFiles/solar_track_node.dir/requires: solar_track/CMakeFiles/solar_track_node.dir/src/SolTrack_RiseSet.c.o.requires
-solar_track/CMakeFiles/solar_track_node.dir/requires: solar_track/CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o.requires
+solar_track/CMakeFiles/solar_track_node.dir/requires: solar_track/CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o.requires
 
 .PHONY : solar_track/CMakeFiles/solar_track_node.dir/requires
 

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/solar_track_node.dir/src/SolTrack.c.o"
   "CMakeFiles/solar_track_node.dir/src/SolTrack_RiseSet.c.o"
-  "CMakeFiles/solar_track_node.dir/src/solar_track.cpp.o"
+  "CMakeFiles/solar_track_node.dir/src/solar_track_node.cpp.o"
   "/home/hardyn/solar/devel/lib/solar_track/solar_track_node.pdb"
   "/home/hardyn/solar/devel/lib/solar_track/solar_track_node"
 )

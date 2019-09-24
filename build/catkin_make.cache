@@ -1,2 +1,2 @@
-solar_track
+serial_test:solar_track
 -DCATKIN_DEVEL_PREFIX=/home/hardyn/solar/devel -DCMAKE_INSTALL_PREFIX=/home/hardyn/solar/install -G Unix Makefiles
